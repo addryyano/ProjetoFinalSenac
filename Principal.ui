@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Janela_Principal</class>
+ <widget class="QMainWindow" name="Janela_Principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>514</width>
+    <height>236</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Floricultura</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 225, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>491</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 225, 255);</string>
+    </property>
+    <property name="text">
+     <string>FLORICULTURA Amor Perfeito</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>514</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="actionSair"/>
+   </widget>
+   <widget class="QMenu" name="menuClientes">
+    <property name="title">
+     <string>Clientes</string>
+    </property>
+    <addaction name="actionConsultar_Clientes"/>
+    <addaction name="actionCadastrar_Clientes"/>
+   </widget>
+   <widget class="QMenu" name="menuProdutos">
+    <property name="title">
+     <string>Produtos</string>
+    </property>
+    <addaction name="actionConsultar_Produtos"/>
+    <addaction name="actionCadastrar_Produtos"/>
+   </widget>
+   <widget class="QMenu" name="menuVendas">
+    <property name="title">
+     <string>Vendas</string>
+    </property>
+    <addaction name="actionHistorico_de_vendas"/>
+   </widget>
+   <addaction name="menuArquivo"/>
+   <addaction name="menuClientes"/>
+   <addaction name="menuProdutos"/>
+   <addaction name="menuVendas"/>
+  </widget>
+  <action name="actionSair">
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="actionConsultar_Produtos">
+   <property name="text">
+    <string>Consultar Produtos</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_Produtos">
+   <property name="text">
+    <string>Cadastrar Produtos</string>
+   </property>
+  </action>
+  <action name="actionHistorico_de_vendas">
+   <property name="text">
+    <string>Historico de vendas</string>
+   </property>
+  </action>
+  <action name="actionConsultar_Clientes">
+   <property name="text">
+    <string>Consultar Clientes</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_Clientes">
+   <property name="text">
+    <string>Cadastrar Clientes</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
