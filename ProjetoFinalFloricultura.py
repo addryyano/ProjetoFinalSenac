@@ -51,9 +51,14 @@ def consultaCliente():
     try:
         conectarBanco()
         idCliente = ConsultaClientes.txtconsultaClienteId.text()
+        nomeCliente = ConsultaClientes.txtconsultaClienteNome.text()
         with conex.cursor() as c:
-            #sql = "SELECT * FROM cliente WHERE IdCliente = " + idCliente + ";"
-            sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
+            if idCliente == "":
+                sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE NomeCliente = '" + nomeCliente + "';"
+                nomeCliente = ""
+            else:
+                sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
+                idCliente = ""
             print(sql)
             c.execute(sql)
             res = c.fetchone()
@@ -64,7 +69,7 @@ def consultaCliente():
             ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
             ConsultaClientes.txtBairroConsulta.setText(res['NomeBairro'] + ", " + res['Cidade'])
             print(res)
-            
+
     except Exception:
         msgProblemaDb()
     finally:
@@ -75,8 +80,14 @@ def consultaProduto():
     try:
         conectarBanco()
         idProduto = ConsultaProdutos.txtconsultaProdutoId.text()
+        nomeProduto = ConsultaProdutos.txtconsultaProdutoNome.text()
         with conex.cursor() as c:
-            sql = "SELECT * FROM produto WHERE IdProduto = " + idProduto + ";"
+            if idProduto == "":
+                sql = "SELECT * FROM produto WHERE NomeProduto = '" + nomeProduto + "';"
+                nomeProduto = ""
+            else:
+                sql = "SELECT * FROM produto WHERE IdProduto = " + idProduto + ";"
+                idProduto = ""
             print(sql)
             c.execute(sql)
             res = c.fetchone()
@@ -195,5 +206,11 @@ Principal.btnCadProdPrincipal.clicked.connect(CadastroProdutos.show)
 #Botão Vendas
 Principal.btnVendasPrincipal.clicked.connect(Vendas.show)
 
+
+
 login.show()
 app.exec()
+
+Vendas.tabelaAutores = QTableWidget()
+Vendas.tabelaAutores.move(1, 2)
+Vendas.tabelaAutores.resize(250, 300)

@@ -271,6 +271,11 @@ border-width: 2px</string>
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
@@ -279,7 +284,7 @@ border-width: 1px;
 border-color: rgb(204, 204, 204)</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtconsultaProdutoId_2">
+   <widget class="QLineEdit" name="txtconsultaProdutoNome">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -287,6 +292,11 @@ border-color: rgb(204, 204, 204)</string>
       <width>150</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
