@@ -108,6 +108,29 @@ def cadastroCliente():
         conex.close()
 
 
+def cadastroProduto():
+    try:
+        conectarBanco()
+        nomeProduto = CadastroProdutos.txtNomeProdCadastro.text()
+        tipoProduto = CadastroProdutos.txtTipoProdCadastro.text()
+        precoProduto = CadastroProdutos.txtPrecoProdCadastro.text()
+        qtdProduto = CadastroProdutos.txtQtdProdCadastro.text()
+
+        with conex.cursor() as c:
+            sql = "INSERT INTO PRODUTO (`NomeProduto`, `TipoProduto`, `PrecoProduto`, `QtdEstoque`) VALUES ('" + nomeProduto + "','" + tipoProduto + "',' " + precoProduto + "','" + qtdProduto + "');"
+            print(sql)
+            c.execute(sql)
+            conex.commit()
+            c.close()
+            msgSucesso()
+            limpaCamposCadProduto()
+
+    except Exception:
+        msgProblemaDb()
+    finally:
+        conex.close()
+
+
 def conectarBanco():
     global conex
     conex = pymysql.connect(host='localhost', user='root', password='root', database='db_floricultura',
@@ -133,12 +156,34 @@ def limpaCamposCadCliente():
     CadastroClientes.txtEnderecoCadastro.setText("")
     CadastroClientes.txtBairroCadastro.setText("")
 
+def limpaCamposCadProduto():
+    CadastroProdutos.txtNomeProdCadastro.setText("")
+    CadastroProdutos.txtTipoProdCadastro.setText("")
+    CadastroProdutos.txtPrecoProdCadastro.setText("")
+    CadastroProdutos.txtQtdProdCadastro.setText("")
+
 #Botão entrar no sistema
 login.btnEntrar.clicked.connect(abreTelaPrincipal)
 
+#Botão Consulta Clientes
 ConsultaClientes.btnConsultaIdCliente.clicked.connect(consultaCliente)
+Principal.btnConsultaClientePrincipal.clicked.connect(ConsultaClientes.show)
+
+#Botão Consulta Produtos
 ConsultaProdutos.btnIdProdConsulta.clicked.connect(consultaProduto)
+Principal.btnConsultaProdPrincipal.clicked.connect(ConsultaProdutos.show)
+
+#Botão Cadastro Clientes
 CadastroClientes.btnCadastrarCliente.clicked.connect(cadastroCliente)
+Principal.btnCadClientePrincipal.clicked.connect(CadastroClientes.show)
+
+#Botão Cadastro Produtos
+CadastroProdutos.btnCadastrarProduto.clicked.connect(cadastroProduto)
+Principal.btnCadProdPrincipal.clicked.connect(CadastroProdutos.show)
+
+#Botão Vendas
+Principal.btnVendasPrincipal.clicked.connect(Vendas.show)
+
 
 login.show()
 app.exec()

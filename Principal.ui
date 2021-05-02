@@ -17,7 +17,7 @@
    <string notr="true">background-color: rgb(255, 225, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnCadClientePrincipal">
     <property name="geometry">
      <rect>
       <x>25</x>
@@ -25,6 +25,9 @@
       <width>250</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string/>
@@ -40,7 +43,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnCadProdPrincipal">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -48,6 +51,9 @@
       <width>250</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string/>
@@ -63,7 +69,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnConsultaProdPrincipal">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -71,6 +77,9 @@
       <width>250</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string/>
@@ -86,7 +95,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="btnConsultaClientePrincipal">
     <property name="geometry">
      <rect>
       <x>25</x>
@@ -94,6 +103,9 @@
       <width>250</width>
       <height>150</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string/>
@@ -125,6 +137,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
+    </property>
     <property name="text">
      <string>CADASTRO CLIENTES</string>
     </property>
@@ -144,6 +159,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string>CONSULTA CLIENTES</string>
@@ -165,6 +183,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
+    </property>
     <property name="text">
      <string>CONSULTA PRODUTOS</string>
     </property>
@@ -185,11 +206,14 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
+    </property>
     <property name="text">
      <string>CADASTRO PRODUTOS</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="btnVendasPrincipal">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -197,6 +221,9 @@
       <width>350</width>
       <height>80</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string/>
@@ -228,6 +255,9 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
+    </property>
     <property name="text">
      <string>Vendas</string>
     </property>
@@ -247,6 +277,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
      <string>Vendas</string>
