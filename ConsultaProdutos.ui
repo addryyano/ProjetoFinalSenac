@@ -66,7 +66,7 @@
       <x>160</x>
       <y>190</y>
       <width>331</width>
-      <height>108</height>
+      <height>112</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -74,14 +74,15 @@
       <widget class="QLineEdit" name="txtNomeProdConsulta">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -89,14 +90,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtTipoProdConsulta">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -104,14 +106,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtPrecoProdConsulta">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -119,14 +122,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtQtdProdConsulta">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -192,39 +196,13 @@ border-width: 1px</string>
      <string>CONSULTA DE PRODUTOS</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnNomeProdConsulta">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>120</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-border-radius: 8px;
-border-style: groove;
-border-width: 2px</string>
-    </property>
-    <property name="text">
-     <string>CONSULTAR</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="lblNome_2">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>80</y>
       <width>121</width>
-      <height>31</height>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
@@ -244,7 +222,7 @@ border-width: 2px</string>
       <x>30</x>
       <y>120</y>
       <width>151</width>
-      <height>31</height>
+      <height>23</height>
      </rect>
     </property>
     <property name="font">
@@ -262,8 +240,8 @@ border-width: 2px</string>
     <property name="geometry">
      <rect>
       <x>370</x>
-      <y>80</y>
-      <width>111</width>
+      <y>95</y>
+      <width>120</width>
       <height>31</height>
      </rect>
     </property>
@@ -289,15 +267,33 @@ border-width: 2px</string>
      <rect>
       <x>180</x>
       <y>80</y>
-      <width>111</width>
-      <height>31</height>
+      <width>50</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtconsultaProdutoId_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>120</y>
+      <width>150</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;
+border-style: groove;
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
     </property>
    </widget>
   </widget>

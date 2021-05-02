@@ -85,6 +85,29 @@ def consultaProduto():
         conex.close()
 
 
+def cadastroCliente():
+    try:
+        conectarBanco()
+        NomeCliente = CadastroClientes.txtNomeClienteCadastro.text()
+        SobreNomeCliente = CadastroClientes.txtSobreNomeClienteCadastro.text()
+        rgCliente = CadastroClientes.txtRgCadastro.text()
+        EnderecoCliente = CadastroClientes.txtEnderecoCadastro.text()
+        IdBairro = CadastroClientes.txtBairroCadastro.text()
+        with conex.cursor() as c:
+            sql = "INSERT INTO CLIENTE (`RgCliente`, `NomeCliente`, `SobreNomeCliente`, `EnderecoCliente`, `IdBairro`) VALUES ('" + rgCliente + "','" + NomeCliente + "',' " + SobreNomeCliente + "','" + EnderecoCliente + "','" + IdBairro + "');"
+            print(sql)
+            c.execute(sql)
+            conex.commit()
+            c.close()
+            msgSucesso()
+            limpaCamposCadCliente()
+
+    except Exception:
+        msgProblemaDb()
+    finally:
+        conex.close()
+
+
 def conectarBanco():
     global conex
     conex = pymysql.connect(host='localhost', user='root', password='root', database='db_floricultura',
@@ -97,13 +120,25 @@ def msgProblemaDb():
     msgProblema.setText('Falha ao obter dados, contate o administrador')
     msgProblema.exec()
 
+def msgSucesso():
+    msgSucess = QMessageBox()
+    msgSucess.setWindowTitle('Sucesso')
+    msgSucess.setText('Procedimento realizado com sucesso!')
+    msgSucess.exec()
 
+def limpaCamposCadCliente():
+    CadastroClientes.txtNomeClienteCadastro.setText("")
+    CadastroClientes.txtSobreNomeClienteCadastro.setText("")
+    CadastroClientes.txtRgCadastro.setText("")
+    CadastroClientes.txtEnderecoCadastro.setText("")
+    CadastroClientes.txtBairroCadastro.setText("")
 
 #Botão entrar no sistema
 login.btnEntrar.clicked.connect(abreTelaPrincipal)
 
 ConsultaClientes.btnConsultaIdCliente.clicked.connect(consultaCliente)
 ConsultaProdutos.btnIdProdConsulta.clicked.connect(consultaProduto)
+CadastroClientes.btnCadastrarCliente.clicked.connect(cadastroCliente)
 
 login.show()
 app.exec()

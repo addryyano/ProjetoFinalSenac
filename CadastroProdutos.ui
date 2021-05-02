@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>160</y>
+      <y>162</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -46,7 +46,7 @@
       <x>160</x>
       <y>100</y>
       <width>331</width>
-      <height>108</height>
+      <height>112</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -54,14 +54,15 @@
       <widget class="QLineEdit" name="txtNomeProdCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -69,14 +70,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtTipoProdCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -84,14 +86,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtPrecoProdCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -99,14 +102,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtQtdProdCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -116,7 +120,7 @@ border-width: 1px</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>100</y>
+      <y>102</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -136,7 +140,7 @@ border-width: 1px</string>
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>130</y>
+      <y>132</y>
       <width>121</width>
       <height>16</height>
      </rect>
@@ -203,7 +207,7 @@ border-width: 2px
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>190</y>
+      <y>192</y>
       <width>121</width>
       <height>16</height>
      </rect>

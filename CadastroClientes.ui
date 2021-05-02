@@ -149,7 +149,7 @@ border-width: 2px</string>
       <x>160</x>
       <y>70</y>
       <width>331</width>
-      <height>108</height>
+      <height>112</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -157,14 +157,17 @@ border-width: 2px</string>
       <widget class="QLineEdit" name="txtNomeClienteCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -172,14 +175,17 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtSobreNomeClienteCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -187,14 +193,15 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtRgCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
@@ -202,18 +209,61 @@ border-width: 1px</string>
       <widget class="QLineEdit" name="txtEnderecoCadastro">
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border-style: groove;
-border-width: 1px</string>
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLineEdit" name="txtBairroCadastro">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>187</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;
+border-style: groove;
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEndereco_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>190</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Bairro Id:</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
