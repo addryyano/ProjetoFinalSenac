@@ -37,6 +37,7 @@ Principal.actionSair.triggered.connect(CadastroProdutos.close)
 Principal.actionSair.triggered.connect(Vendas.close)
 
 
+
 def abreTelaPrincipal():
     if (login.txtUsuario.text() == "root" and login.txtSenha.text() == "root"):
         login.lblResultado.setText("")
@@ -51,14 +52,19 @@ def consultaCliente():
         conectarBanco()
         idCliente = ConsultaClientes.txtconsultaClienteId.text()
         with conex.cursor() as c:
-            sql = "SELECT * FROM cliente WHERE IdCliente = " + idCliente + ";"
+            #sql = "SELECT * FROM cliente WHERE IdCliente = " + idCliente + ";"
+            sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
+            print(sql)
             c.execute(sql)
             res = c.fetchone()
+            print(res)
             ConsultaClientes.txtSobreNomeClienteConsulta.setText(res['SobreNomeCliente'])
             ConsultaClientes.txtNomeClienteConsulta.setText(res['NomeCliente'])
             ConsultaClientes.txt_EnderecoConsulta.setText(res['EnderecoCliente'])
             ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
-
+            ConsultaClientes.txtBairroConsulta.setText(res['NomeBairro'] + ", " + res['Cidade'])
+            print(res)
+            
     except Exception:
         msgProblemaDb()
     finally:
@@ -131,6 +137,10 @@ def cadastroProduto():
         conex.close()
 
 
+
+
+
+
 def conectarBanco():
     global conex
     conex = pymysql.connect(host='localhost', user='root', password='root', database='db_floricultura',
@@ -162,6 +172,7 @@ def limpaCamposCadProduto():
     CadastroProdutos.txtPrecoProdCadastro.setText("")
     CadastroProdutos.txtQtdProdCadastro.setText("")
 
+
 #Botão entrar no sistema
 login.btnEntrar.clicked.connect(abreTelaPrincipal)
 
@@ -183,7 +194,6 @@ Principal.btnCadProdPrincipal.clicked.connect(CadastroProdutos.show)
 
 #Botão Vendas
 Principal.btnVendasPrincipal.clicked.connect(Vendas.show)
-
 
 login.show()
 app.exec()

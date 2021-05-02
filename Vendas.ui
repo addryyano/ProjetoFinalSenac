@@ -17,7 +17,7 @@
    <string notr="true">background-color: rgb(255, 225, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="listVendas">
     <property name="geometry">
      <rect>
       <x>5</x>
