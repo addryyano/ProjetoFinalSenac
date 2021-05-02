@@ -36,9 +36,6 @@ Principal.actionSair.triggered.connect(CadastroClientes.close)
 Principal.actionSair.triggered.connect(CadastroProdutos.close)
 Principal.actionSair.triggered.connect(Vendas.close)
 
-#def botoes():
-#    ConsultaClientes.btnConsultaIdCliente.clicked.connect(msgProblemaDb)
-
 
 def abreTelaPrincipal():
     if (login.txtUsuario.text() == "root" and login.txtSenha.text() == "root"):
@@ -53,21 +50,39 @@ def consultaCliente():
     try:
         conectarBanco()
         idCliente = ConsultaClientes.txtconsultaClienteId.text()
-        print(idCliente)
         with conex.cursor() as c:
-            #sql = "SELECT NomeCliente FROM cliente WHERE IdCliente = " + idCliente + ";"
             sql = "SELECT * FROM cliente WHERE IdCliente = " + idCliente + ";"
             c.execute(sql)
             res = c.fetchone()
+            ConsultaClientes.txtSobreNomeClienteConsulta.setText(res['SobreNomeCliente'])
             ConsultaClientes.txtNomeClienteConsulta.setText(res['NomeCliente'])
-        print("teste")
+            ConsultaClientes.txt_EnderecoConsulta.setText(res['EnderecoCliente'])
+            ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
+
     except Exception:
         msgProblemaDb()
     finally:
         conex.close()
 
 
+def consultaProduto():
+    try:
+        conectarBanco()
+        idProduto = ConsultaProdutos.txtconsultaProdutoId.text()
+        with conex.cursor() as c:
+            sql = "SELECT * FROM produto WHERE IdProduto = " + idProduto + ";"
+            print(sql)
+            c.execute(sql)
+            res = c.fetchone()
+            ConsultaProdutos.txtNomeProdConsulta.setText(res['NomeProduto'])
+            ConsultaProdutos.txtTipoProdConsulta.setText(res['TipoProduto'])
+            ConsultaProdutos.txtPrecoProdConsulta.setText(str(res['PrecoProduto']))
+            ConsultaProdutos.txtQtdProdConsulta.setText(str(res['QtdEstoque']))
 
+    except Exception:
+        msgProblemaDb()
+    finally:
+        conex.close()
 
 
 def conectarBanco():
@@ -88,6 +103,7 @@ def msgProblemaDb():
 login.btnEntrar.clicked.connect(abreTelaPrincipal)
 
 ConsultaClientes.btnConsultaIdCliente.clicked.connect(consultaCliente)
+ConsultaProdutos.btnIdProdConsulta.clicked.connect(consultaProduto)
 
 login.show()
 app.exec()

@@ -81,7 +81,7 @@ border-width: 1px</string>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="txtRgConsulta">
+      <widget class="QLineEdit" name="txtRgClienteConsulta">
        <property name="font">
         <font>
          <pointsize>10</pointsize>

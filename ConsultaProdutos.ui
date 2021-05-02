@@ -224,7 +224,7 @@ border-width: 2px</string>
       <x>30</x>
       <y>80</y>
       <width>121</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -244,7 +244,7 @@ border-width: 2px</string>
       <x>30</x>
       <y>120</y>
       <width>151</width>
-      <height>16</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -282,6 +282,22 @@ border-width: 2px</string>
     </property>
     <property name="text">
      <string>CONSULTAR</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtconsultaProdutoId">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>80</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;
+border-style: groove;
+border-width: 1px</string>
     </property>
    </widget>
   </widget>
