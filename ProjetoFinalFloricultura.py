@@ -1,3 +1,5 @@
+import datetime
+
 from PyQt5 import uic,QtWidgets
 from PyQt5.QtWidgets import *
 import pymysql
@@ -21,6 +23,8 @@ ConsultaClientes=uic.loadUi("ConsultaClientes.ui")
 ConsultaProdutos=uic.loadUi("ConsultaProdutos.ui")
 #Vendas
 Vendas=uic.loadUi("Vendas.ui")
+#Nova Venda
+NovaVenda=uic.loadUi("NovaVenda.ui")
 
 
 #MenuBar
@@ -29,12 +33,14 @@ Principal.actionConsultar_Produtos.triggered.connect(ConsultaProdutos.show)
 Principal.actionCadastrar_Clientes.triggered.connect(CadastroClientes.show)
 Principal.actionCadastrar_Produtos.triggered.connect(CadastroProdutos.show)
 Principal.actionHistorico_de_vendas.triggered.connect(Vendas.show)
+Principal.actionRegistrar_Nova_Venda.triggered.connect(NovaVenda.show)
 Principal.actionSair.triggered.connect(Principal.close)
 Principal.actionSair.triggered.connect(ConsultaClientes.close)
 Principal.actionSair.triggered.connect(ConsultaProdutos.close)
 Principal.actionSair.triggered.connect(CadastroClientes.close)
 Principal.actionSair.triggered.connect(CadastroProdutos.close)
 Principal.actionSair.triggered.connect(Vendas.close)
+Principal.actionSair.triggered.connect(NovaVenda.close)
 
 
 
@@ -151,11 +157,15 @@ def cadastroProduto():
 def carregaVendas():
     try:
         conectarBanco()
+        dataCompraDe = Vendas.dataVendasDe.text()
+        dataCompraAte = Vendas.dataVendasAte.text()
         with conex.cursor() as c:
-            sql = 'SELECT * FROM Compra;'
+            #sql = 'SELECT * FROM Compra;'
+            sql = "SELECT * FROM COMPRA WHERE DataCompra BETWEEN '" + dataCompraDe + "' AND '" + dataCompraAte + "';"
+            print(sql)
             c.execute(sql)
             resVendas = c.fetchall()
-            print (resVendas)
+
     except Exception:
         msgProblemaDb()
     else:
@@ -177,7 +187,28 @@ def carregaVendas():
         conex.close()
 
 
-
+def registroVenda():
+    try:
+        conectarBanco()
+        idCliente = NovaVenda.txtIdClienteVenda.text()
+        idProduto = NovaVenda.txtIdProdutoVenda.text()
+        dataCompra = NovaVenda.dataVendaNova.text()
+        numeroNfse = NovaVenda.nNfse.text()
+        codigoTransacao = NovaVenda.codOperacaoVenda.text()
+        qtdComprado = NovaVenda.qtdVenda.text()
+        with conex.cursor() as c:
+            sql = "INSERT INTO COMPRA (`IdCliente`, `IdProduto`, `DataCompra`, `NumeroNfe`, `CodigoTransacao`, `QtdComprado`) VALUES ('" + idCliente + "','" + idProduto + "',' " + dataCompra + "','" + numeroNfse + "','" + codigoTransacao + "','" + qtdComprado + "');"
+            print(sql)
+            c.execute(sql)
+            conex.commit()
+            c.close()
+            msgSucesso()
+            limpaCamposNovaVenda()
+            
+    except Exception:
+        msgProblemaDb()
+    finally:
+        conex.close()
 
 def conectarBanco():
     global conex
@@ -204,12 +235,18 @@ def limpaCamposCadCliente():
     CadastroClientes.txtEnderecoCadastro.setText("")
     CadastroClientes.txtBairroCadastro.setText("")
 
+def limpaCamposNovaVenda():
+    NovaVenda.txtIdClienteVenda.setText("")
+    NovaVenda.txtIdProdutoVenda.setText("")
+    NovaVenda.nNfse.setText("")
+    NovaVenda.codOperacaoVenda.setText("")
+    NovaVenda.qtdVenda.setText("")
+
 def limpaCamposCadProduto():
     CadastroProdutos.txtNomeProdCadastro.setText("")
     CadastroProdutos.txtTipoProdCadastro.setText("")
     CadastroProdutos.txtPrecoProdCadastro.setText("")
     CadastroProdutos.txtQtdProdCadastro.setText("")
-
 
 #Botão entrar no sistema
 login.btnEntrar.clicked.connect(abreTelaPrincipal)
@@ -232,16 +269,17 @@ Principal.btnCadProdPrincipal.clicked.connect(CadastroProdutos.show)
 
 #Botão Vendas
 Principal.btnVendasPrincipal.clicked.connect(Vendas.show)
+NovaVenda.btnRegistraVenda.clicked.connect(registroVenda)
+Vendas.btnNovaVendaPainel.clicked.connect(NovaVenda.show)
+NovaVenda.btnAbreConsultaCliente.clicked.connect(ConsultaClientes.show)
+NovaVenda.btnAbreConsultaProduto.clicked.connect(ConsultaProdutos.show)
 
-Vendas.btnVendas.clicked.connect(carregaVendas)
-carregaVendas()
+
+#Vendas.btnVendas.clicked.connect(carregaVendas)
+#carregaVendas()
+Vendas.btnDataVendas.clicked.connect(carregaVendas)
+
 
 
 login.show()
 app.exec()
-
-Vendas.tabelaAutores = QTableWidget()
-Vendas.tabelaAutores.move(1, 2)
-Vendas.tabelaAutores.resize(250, 300)
-
-

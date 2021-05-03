@@ -259,7 +259,7 @@
      <string notr="true">background-color: rgb(255, 239, 252);</string>
     </property>
     <property name="text">
-     <string>Vendas</string>
+     <string>Painel</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -324,6 +324,7 @@
      <string>Vendas</string>
     </property>
     <addaction name="actionHistorico_de_vendas"/>
+    <addaction name="actionRegistrar_Nova_Venda"/>
    </widget>
    <addaction name="menuArquivo"/>
    <addaction name="menuClientes"/>
@@ -358,6 +359,11 @@
   <action name="actionCadastrar_Clientes">
    <property name="text">
     <string>Cadastrar Clientes</string>
+   </property>
+  </action>
+  <action name="actionRegistrar_Nova_Venda">
+   <property name="text">
+    <string>Registrar Nova Venda</string>
    </property>
   </action>
  </widget>
