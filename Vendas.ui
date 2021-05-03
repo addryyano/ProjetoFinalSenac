@@ -37,13 +37,26 @@
      <string>PAINEL DE VENDAS</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tblVendas">
+   <widget class="QPushButton" name="btnVendas">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
-      <width>571</width>
-      <height>291</height>
+      <y>40</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tblVendas">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>71</y>
+      <width>581</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -52,6 +65,16 @@ border-radius: 10px;
 border-style: groove;
 border-width: 1px;
 border-color: rgb(204, 204, 204)</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dateEdit">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>20</y>
+      <width>110</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>

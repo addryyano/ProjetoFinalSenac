@@ -148,6 +148,33 @@ def cadastroProduto():
         conex.close()
 
 
+def carregaVendas():
+    try:
+        conectarBanco()
+        with conex.cursor() as c:
+            sql = 'SELECT * FROM Compra;'
+            c.execute(sql)
+            resVendas = c.fetchall()
+            print (resVendas)
+    except Exception:
+        msgProblemaDb()
+    else:
+        linhas = len(resVendas)
+        colunas = len(resVendas[0])
+        print(colunas)
+        Vendas.tblVendas.setRowCount(linhas)
+        Vendas.tblVendas.setColumnCount(colunas)
+
+        # Ajustar cabeçalho e dimensões da tabela
+        Vendas.tblVendas.setHorizontalHeaderLabels((list(resVendas[0].keys())))
+        Vendas.tblVendas.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+
+        for l in range(linhas):
+            for c in range(colunas):
+                item = (list(resVendas[l].values())[c])
+                Vendas.tblVendas.setItem(l, c, QTableWidgetItem(str(item)))
+    finally:
+        conex.close()
 
 
 
@@ -206,6 +233,8 @@ Principal.btnCadProdPrincipal.clicked.connect(CadastroProdutos.show)
 #Botão Vendas
 Principal.btnVendasPrincipal.clicked.connect(Vendas.show)
 
+Vendas.btnVendas.clicked.connect(carregaVendas)
+carregaVendas()
 
 
 login.show()
@@ -214,3 +243,5 @@ app.exec()
 Vendas.tabelaAutores = QTableWidget()
 Vendas.tabelaAutores.move(1, 2)
 Vendas.tabelaAutores.resize(250, 300)
+
+
