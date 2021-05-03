@@ -160,7 +160,7 @@ border-color: rgb(204, 204, 204)</string>
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>95</y>
+      <y>80</y>
       <width>120</width>
       <height>31</height>
      </rect>
@@ -353,6 +353,75 @@ border-color: rgb(204, 204, 204)</string>
     </property>
     <property name="text">
      <string>Bairro:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLimparCliente">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>120</y>
+      <width>120</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 8px;
+border-style: groove;
+border-width: 2px
+</string>
+    </property>
+    <property name="text">
+     <string>LIMPAR</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>316</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Cliente ID</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtClienteIdConsulta">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>316</y>
+      <width>50</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;
+border-style: groove;
+border-width: 1px;
+border-color: rgb(204, 204, 204)</string>
     </property>
    </widget>
   </widget>

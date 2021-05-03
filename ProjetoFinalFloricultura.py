@@ -55,32 +55,46 @@ def abreTelaPrincipal():
 
 def consultaCliente():
     try:
-        conectarBanco()
+
         idCliente = ConsultaClientes.txtconsultaClienteId.text()
         nomeCliente = ConsultaClientes.txtconsultaClienteNome.text()
-        with conex.cursor() as c:
+        if ConsultaClientes.btnConsultaIdCliente.text == "Excluir":
             if idCliente == "":
-                sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE NomeCliente = '" + nomeCliente + "';"
-                nomeCliente = ""
+                excluirProdutoOuCliente("nomeCliente", nomeCliente)
+                # nomeCliente = ""
             else:
-                sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
-                idCliente = ""
-            print(sql)
-            c.execute(sql)
-            res = c.fetchone()
-            print(res)
-            ConsultaClientes.txtSobreNomeClienteConsulta.setText(res['SobreNomeCliente'])
-            ConsultaClientes.txtNomeClienteConsulta.setText(res['NomeCliente'])
-            ConsultaClientes.txt_EnderecoConsulta.setText(res['EnderecoCliente'])
-            ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
-            ConsultaClientes.txtBairroConsulta.setText(res['NomeBairro'] + ", " + res['Cidade'])
-            print(res)
+                excluirProdutoOuCliente("idCliente", idCliente)
+                # idCliente = ""
+            ConsultaClientes.btnConsultaIdCliente.setText("CONSULTAR")
+        elif ConsultaClientes.btnConsultaIdCliente.text() == "CONSULTAR":
+            conectarBanco()
+            with conex.cursor() as c:
+                if ConsultaClientes.btnConsultaIdCliente.text() =="CONSULTAR":
+                    if idCliente == "":
+                        sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE NomeCliente = '" + nomeCliente + "';"
+                        nomeCliente = ""
+                    else:
+                        sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
+                        idCliente = ""
+                    ConsultaClientes.btnConsultaIdCliente.setText("Excluir")
+
+
+                print(sql)
+                c.execute(sql)
+                res = c.fetchone()
+                print(res)
+                ConsultaClientes.txtSobreNomeClienteConsulta.setText(res['SobreNomeCliente'])
+                ConsultaClientes.txtNomeClienteConsulta.setText(res['NomeCliente'])
+                ConsultaClientes.txt_EnderecoConsulta.setText(res['EnderecoCliente'])
+                ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
+                ConsultaClientes.txtBairroConsulta.setText(res['NomeBairro'] + ", " + res['Cidade'])
+                ConsultaClientes.txtClienteIdConsulta.setText(str(res['IdCliente']))
+                print(res)
 
     except Exception:
-        msgProblemaDb()
+            msgProblemaDb()
     finally:
         conex.close()
-
 
 def consultaProduto():
     try:
@@ -204,9 +218,28 @@ def registroVenda():
             c.close()
             msgSucesso()
             limpaCamposNovaVenda()
-            
+
     except Exception:
         msgProblemaDb()
+    finally:
+        conex.close()
+
+
+def excluirProdutoOuCliente(prodOuCli, idOuNome):
+    try:
+        conectarBanco()
+        with conex.cursor() as cur:
+            if prodOuCli == "idCliente":
+                sql = "DELETE FROM CLIENTE WHERE IdCliente = " + idOuNome + ";"
+            elif prodOuCli == "nomeCliente":
+                sql = "DELETE FROM CLIENTE WHERE NomeCliente = '" + idOuNome + "';"
+            cur.execute(sql)
+            conex.commit()
+            cur.close()
+    except Exception:
+        msgProblemaDb()
+    else:
+        msgSucesso()
     finally:
         conex.close()
 
@@ -235,6 +268,17 @@ def limpaCamposCadCliente():
     CadastroClientes.txtEnderecoCadastro.setText("")
     CadastroClientes.txtBairroCadastro.setText("")
 
+def limpaCamposConsultaCliente():
+    ConsultaClientes.txtNomeClienteConsulta.setText("")
+    ConsultaClientes.txtSobreNomeClienteConsulta.setText("")
+    ConsultaClientes.txtRgClienteConsulta.setText("")
+    ConsultaClientes.txt_EnderecoConsulta.setText("")
+    ConsultaClientes.txtBairroConsulta.setText("")
+    ConsultaClientes.txtClienteIdConsulta.setText("")
+    ConsultaClientes.txtconsultaClienteId.setText("")
+    ConsultaClientes.txtconsultaClienteNome.setText("")
+    ConsultaClientes.btnConsultaIdCliente.setText("CONSULTAR")
+
 def limpaCamposNovaVenda():
     NovaVenda.txtIdClienteVenda.setText("")
     NovaVenda.txtIdProdutoVenda.setText("")
@@ -254,6 +298,8 @@ login.btnEntrar.clicked.connect(abreTelaPrincipal)
 #Botão Consulta Clientes
 ConsultaClientes.btnConsultaIdCliente.clicked.connect(consultaCliente)
 Principal.btnConsultaClientePrincipal.clicked.connect(ConsultaClientes.show)
+ConsultaClientes.btnLimparCliente.clicked.connect(limpaCamposConsultaCliente)
+#ConsultaClientes.btnLimparCliente.clicked.connect()
 
 #Botão Consulta Produtos
 ConsultaProdutos.btnIdProdConsulta.clicked.connect(consultaProduto)
