@@ -26,7 +26,6 @@ Vendas=uic.loadUi("Vendas.ui")
 #Nova Venda
 NovaVenda=uic.loadUi("NovaVenda.ui")
 
-
 #MenuBar
 Principal.actionConsultar_Clientes.triggered.connect(ConsultaClientes.show)
 Principal.actionConsultar_Produtos.triggered.connect(ConsultaProdutos.show)
@@ -42,8 +41,6 @@ Principal.actionSair.triggered.connect(CadastroProdutos.close)
 Principal.actionSair.triggered.connect(Vendas.close)
 Principal.actionSair.triggered.connect(NovaVenda.close)
 
-
-
 def abreTelaPrincipal():
     if (login.txtUsuario.text() == "root" and login.txtSenha.text() == "root"):
         login.lblResultado.setText("")
@@ -52,10 +49,8 @@ def abreTelaPrincipal():
     else:
         login.lblResultado.setText("    Usuário ou senha invalido!")
 
-
 def consultaCliente():
     try:
-
         idCliente = ConsultaClientes.txtconsultaClienteId.text()
         nomeCliente = ConsultaClientes.txtconsultaClienteNome.text()
         if ConsultaClientes.btnConsultaIdCliente.text == "Excluir":
@@ -77,9 +72,6 @@ def consultaCliente():
                         sql = "SELECT CLIENTE.*, BAIRRO.* FROM CLIENTE INNER JOIN BAIRRO ON CLIENTE.IdBairro = BAIRRO.IdBairro WHERE IdCliente = " + idCliente + ";"
                         idCliente = ""
                     ConsultaClientes.btnConsultaIdCliente.setText("Excluir")
-
-
-                print(sql)
                 c.execute(sql)
                 res = c.fetchone()
                 print(res)
@@ -89,8 +81,6 @@ def consultaCliente():
                 ConsultaClientes.txtRgClienteConsulta.setText(str(res['RgCliente']))
                 ConsultaClientes.txtBairroConsulta.setText(res['NomeBairro'] + ", " + res['Cidade'])
                 ConsultaClientes.txtClienteIdConsulta.setText(str(res['IdCliente']))
-                print(res)
-
     except Exception:
             msgProblemaDb()
     finally:
@@ -108,19 +98,16 @@ def consultaProduto():
             else:
                 sql = "SELECT * FROM produto WHERE IdProduto = " + idProduto + ";"
                 idProduto = ""
-            print(sql)
             c.execute(sql)
             res = c.fetchone()
             ConsultaProdutos.txtNomeProdConsulta.setText(res['NomeProduto'])
             ConsultaProdutos.txtTipoProdConsulta.setText(res['TipoProduto'])
             ConsultaProdutos.txtPrecoProdConsulta.setText(str(res['PrecoProduto']))
             ConsultaProdutos.txtQtdProdConsulta.setText(str(res['QtdEstoque']))
-
     except Exception:
         msgProblemaDb()
     finally:
         conex.close()
-
 
 def cadastroCliente():
     try:
@@ -138,7 +125,6 @@ def cadastroCliente():
             c.close()
             msgSucesso()
             limpaCamposCadCliente()
-
     except Exception:
         msgProblemaDb()
     finally:
@@ -152,7 +138,6 @@ def cadastroProduto():
         tipoProduto = CadastroProdutos.txtTipoProdCadastro.text()
         precoProduto = CadastroProdutos.txtPrecoProdCadastro.text()
         qtdProduto = CadastroProdutos.txtQtdProdCadastro.text()
-
         with conex.cursor() as c:
             sql = "INSERT INTO PRODUTO (`NomeProduto`, `TipoProduto`, `PrecoProduto`, `QtdEstoque`) VALUES ('" + nomeProduto + "','" + tipoProduto + "',' " + precoProduto + "','" + qtdProduto + "');"
             print(sql)
@@ -161,12 +146,10 @@ def cadastroProduto():
             c.close()
             msgSucesso()
             limpaCamposCadProduto()
-
     except Exception:
         msgProblemaDb()
     finally:
         conex.close()
-
 
 def carregaVendas():
     try:
@@ -174,9 +157,8 @@ def carregaVendas():
         dataCompraDe = Vendas.dataVendasDe.text()
         dataCompraAte = Vendas.dataVendasAte.text()
         with conex.cursor() as c:
-            #sql = 'SELECT * FROM Compra;'
-            sql = "SELECT * FROM COMPRA WHERE DataCompra BETWEEN '" + dataCompraDe + "' AND '" + dataCompraAte + "';"
-            print(sql)
+            sql = "SELECT PRODUTO.NomeProduto as Produto, PRODUTO.PrecoProduto, CONCAT(CLIENTE.NomeCliente, ' ', CLIENTE.SobreNomeCliente) as Cliente, COMPRA.*, (PrecoProduto * QtdComprado) as ' Total R$' FROM COMPRA INNER JOIN CLIENTE ON CLIENTE.IdCliente = COMPRA.IdCliente INNER JOIN PRODUTO ON PRODUTO.IdProduto = COMPRA.IdProduto WHERE DataCompra BETWEEN '" + dataCompraDe + "' AND '" + dataCompraAte + "'; "
+
             c.execute(sql)
             resVendas = c.fetchall()
 
@@ -200,7 +182,6 @@ def carregaVendas():
     finally:
         conex.close()
 
-
 def registroVenda():
     try:
         conectarBanco()
@@ -223,7 +204,6 @@ def registroVenda():
         msgProblemaDb()
     finally:
         conex.close()
-
 
 def excluirProdutoOuCliente(prodOuCli, idOuNome):
     try:
@@ -319,12 +299,7 @@ NovaVenda.btnRegistraVenda.clicked.connect(registroVenda)
 Vendas.btnNovaVendaPainel.clicked.connect(NovaVenda.show)
 NovaVenda.btnAbreConsultaCliente.clicked.connect(ConsultaClientes.show)
 NovaVenda.btnAbreConsultaProduto.clicked.connect(ConsultaProdutos.show)
-
-
-#Vendas.btnVendas.clicked.connect(carregaVendas)
-#carregaVendas()
 Vendas.btnDataVendas.clicked.connect(carregaVendas)
-
 
 
 login.show()
